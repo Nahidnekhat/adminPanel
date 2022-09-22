@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=devise-witdh, initial-scale=1.0"/>
+    <title>Bulding  dashboard with grid and flex</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            color: green;
+            box-sizing: border-box;
+            font-family: monospace;
+            font-size: 20px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 5px 1fr 5px;
+            grid-template-areas: 
+            'header'
+            'main'
+            'footer'
+            'aside';
+        height: 100vh;
+        }
+        .header {
+            grid-area: header;
+            background-color: palevioletred;
+        }
+    
+        .main {
+            grid-area: main;
+            background-color: plum;
+        }
+        .footer {
+            grid-area: footer;
+            background-color: peru;
+        }
+        .header,
+        footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: darkblue;
+            padding: 0 5px;
+        }
+      
+        .main_overview {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            border-bottom: 1px solid lightgreen;
+        }
+        .overview_card {
+            flex-basis: 250px;
+            flex-grow: 1;
+            margin: 10px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            height: 100px;
+            border: 1px solid darkblue;
+            border-radius: 4px;
+            color: darkblue;
+        }
+        .main_cards {
+            margin: 10px;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 100px 100px 100px;
+            grid-template-areas: 
+            'card1'
+            'card2'
+            'card3';
+            grid-gap: 10px;
+        }
+        .card {
+            padding: 20px;
+            border: 1px solid tomato;
+            border-radius: 4px;
+            color: tomato;
+        }
+        .card:first-child {
+            grid-area: card1;
+        }
+        .card:first-child(2) {
+            grid-area: card2;
+        }
+        .card:first-child(3) {
+            grid-area: card3;
+        }
+        @media only screen and (min-width: 900px){
+            .grid-container {
+                display: grid;
+                grid-template-columns: 100px 5fr;
+                grid-template-rows: 50px 8fr 50px;
+                grid-template-areas: 
+                'aside header'
+                'aside main'
+                'aside footer';
+                width: 100%;
+            }
+         
+            }
+            .main_cards {
+                margin: 50px;
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                grid-template-rows: 150px 200px;
+                grid-template-areas: 
+                'card1 card2'
+                'card1 card2'
+                'card1 card3';
+                grid-gap: 10px;
+            }
+        
+        .main-icon {
+            position: fixed;
+            display: flex;
+            top: 0px;
+            left: 0px;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            cursor: pointer;
+            padding: 12px;
+            color: black;
+        }
+        .header_search {
+            margin-left: 24px;
+        }
+        .aside_search {
+            margin-left: 24px;
+        }
+       
+       
+        
+    </style>
+
+</head>
+<body>
+    <div class="grid-container">
+        <div class="menu-icon">
+            
+        </div>
+        <header class="header">
+            <div class="header_search">search...</div>
+            <div class="header_avatar">Logout</div>
+        </header>
+    
+        <main class="main">
+            <div class="main_overview">
+            <div class="overview_card">
+                <div class="overview_card_info">Overview</div>
+                <div class="overview_card-icon">Card</div>
+                </div>
+                <div class="overview_card">
+                    <div class="overview_card_info">Overview</div>
+                    <div class="overview_card-icon">Card</div>
+                </div>
+                <div class="overview_card">
+                    <div class="overview_card_info">Overview</div>
+                    <div class="overview_card-icon">Card</div>
+                </div>
+            </div>
+            <div class="main_cards">
+                <div class="card">Card</div>
+                <div class="card">Card</div>
+                <div class="card">Card</div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer_copyright">&copy;2022</div>
+            <div class="footer_byline">Made by Nahid</div>
+        </footer>
+    </div>
+    <script type="text/javascript">
+    const menuIcon = document.querySelector('.menu-icon');
+    const aside = document.querySelector('.aside');
+    const asideClose = document.querySelector('.aside_close-icon');
+
+    function toggle(el, className) {
+        if(el.classList.contains(className)) {
+            el.classList.remove(className);
+        } else{
+            el.classList.add(className);
+        }
+    }
+    menuIcon.addEventListener('click', function(){
+        toggle(aside, 'active');
+    });
+    asideClose.addEventListener('click', function(){
+        toggle(aside, 'active');
+    });
+ 
+    </script>
+</body>
+</html>
